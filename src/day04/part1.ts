@@ -1,5 +1,10 @@
-import { parseInput } from '../util';
+import { parseInput } from "../util";
+import { validatePassport } from "./util";
 
-const input = parseInput();
+const input = parseInput({ split: { mapper: false, delimiter: "\n\n" } });
 
-// TODO: Complete Part 1
+export default input.reduce(
+  (validPassports, passport) =>
+    validatePassport(passport) ? validPassports + 1 : validPassports,
+  0
+);
