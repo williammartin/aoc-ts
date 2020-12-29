@@ -11,13 +11,19 @@ export const countTrees = (
       return treesHit;
     }
 
-    // e.g. where right = 3 down = 1 for map:
+    // e.g. where right = 1 down = 2 for map:
+    // [".", "."]
     // [".", "."]
     // [".", "#"]
-    // ["#", "."]
-    // index: 0 -> indexOnSection = 0 * 3 % 2 = 0
-    // index: 1 -> indexOnSection = 1 * 3 % 2 = 1
-    // index: 2 -> indexOnSection = 2 * 3 % 2 = 0
-    const indexOnSection = (right * index) % crossSection.length;
+    // index: 0 -> indexOnSection = 1 * (0 / 2) % 2 = 0
+    // index: 1 -> skip
+    // index: 2 -> indexOnSection = 1 * (2 / 2) % 2 = 1
+    const indexOnSection = (right * (index / down)) % crossSection.length;
     return crossSection[indexOnSection] == "#" ? treesHit + 1 : treesHit;
   }, 0);
+
+const multiply = (l: number, r: number) => l * r;
+
+type path = [number, number];
+export const countTreesOnPaths = (paths: path[], map: string[][]) =>
+  paths.map((path) => countTrees(path[0], path[1], map)).reduce(multiply);

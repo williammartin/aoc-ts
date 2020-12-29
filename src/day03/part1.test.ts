@@ -65,4 +65,12 @@ describe("part1", () => {
 
     expect(countTrees(0, 2, map)).to.eql(1);
   });
+
+  it("can handle uneven down and rights", () => {
+    const lines = ["..", "..", ".#"];
+
+    const map = parseMap(lines);
+
+    expect(countTrees(1, 2, map)).to.eql(1);
+  });
 });
