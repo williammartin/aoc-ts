@@ -1,6 +1,7 @@
 {
 	"compilerOptions": {
 		"strict": true,
+		"lib": ["es2020.string"],
     "module": "commonjs",
     "moduleResolution": "node",
 		"target": "es2019",
