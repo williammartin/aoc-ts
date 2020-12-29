@@ -1,5 +1,6 @@
-import { parseInput } from '../util';
+import { parseInput } from "../util";
+import { countTrees, parseMap } from "./util";
 
-const input = parseInput();
+const input = parseInput({ split: { mapper: false } });
 
-// TODO: Complete Part 1
+export default countTrees(3, 1, parseMap(input));
