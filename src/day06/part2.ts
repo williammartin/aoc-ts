@@ -1,5 +1,9 @@
-import { parseInput } from '../util';
+import { parseInput } from "../util";
+import { collectIntersectedAnswers, parseGroup } from "./util";
 
-const input = parseInput();
+const input = parseInput({ split: { mapper: false, delimiter: "\n\n" } });
 
-// TODO: Complete Part 2
+export default input
+  .map((i) => parseGroup(i))
+  .map((group) => collectIntersectedAnswers(group))
+  .reduce((sum, intersectedAnswers) => sum + intersectedAnswers.length, 0);
