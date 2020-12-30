@@ -1,5 +1,9 @@
-import { parseInput } from '../util';
+import { parseInput } from "../util";
+import { countNestedBags, parseRule } from "./util";
 
-const input = parseInput();
+const input = parseInput({ split: { mapper: false } });
 
-// TODO: Complete Part 2
+export default countNestedBags(
+  "shiny gold",
+  input.map((line) => parseRule(line))
+);
