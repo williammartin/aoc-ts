@@ -1,5 +1,9 @@
-import { parseInput } from '../util';
+import { parseInput } from "../util";
+import { collectDistinctAnswers, parseGroup } from "./util";
 
-const input = parseInput();
+const input = parseInput({ split: { mapper: false, delimiter: "\n\n" } });
 
-// TODO: Complete Part 1
+export default input
+  .map((i) => parseGroup(i))
+  .map((group) => collectDistinctAnswers(group))
+  .reduce((sum, distinctAnswers) => sum + distinctAnswers.length, 0);
